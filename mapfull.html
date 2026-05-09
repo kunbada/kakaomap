@@ -83,13 +83,10 @@
 
           document.getElementById('status').innerText = '데이터 불러오는 중...';
 
-          fetch(DATA_URL, { redirect: 'follow' })
-            .then(function(res) { return res.json(); })
-            .then(function(data) {
-              allData = data;
-              buildDateOptions(data);
-              drawMarkers(data);
-            })
+          fetch(DATA_URL, {
+                redirect: 'follow',
+                mode: 'cors'
+              })
             .catch(function(err) {
               document.getElementById('status').innerText = '❌ 오류: ' + err.message;
               console.error(err);
